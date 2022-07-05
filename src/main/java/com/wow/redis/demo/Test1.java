@@ -1,4 +1,4 @@
-package com.wow.redis;
+package com.wow.redis.demo;
 
 import javax.swing.*;
 import java.awt.*;
