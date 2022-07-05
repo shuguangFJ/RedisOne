@@ -10,7 +10,9 @@ public class TestLayout {
 
     public static void main(String[] args) {
         TestLayout tl = new TestLayout();
-        tl.layout1();
+//        tl.layout();
+//        tl.layout1();
+        tl.layout2();
     }
 
     private JFrame create(){
@@ -54,11 +56,35 @@ public class TestLayout {
         JPanel panel = new JPanel();
         for(int i = 0;i<5;i++){
             JButton btn = new JButton(String.valueOf(i+1));
+            btn.setSize(40,40);
             panel.add(btn);
         }
         panel.setLayout(new FlowLayout(FlowLayout.LEADING,20,20));
         panel.setBackground(Color.GRAY);
         frame.add(panel);
+        frame.setVisible(true);
+    }
+
+    /**
+     * card layout
+     */
+    public void layout2(){
+        JFrame frame = create();
+        JPanel panel1 = new JPanel();
+        JPanel panel2 = new JPanel();
+        JPanel cards = new JPanel(new CardLayout());
+        panel1.add(new JButton("登录按钮"));
+        panel1.add(new JButton("注册按钮"));
+        panel1.add(new JButton("找回密码按钮"));
+        panel2.add(new JTextField("用户名文本框",20));
+        panel2.add(new JTextField("密码文本框",20));
+        panel2.add(new JTextField("验证码文本框",20));
+        cards.add(panel1,"card1");
+        cards.add(panel2,"card2");
+        CardLayout cl=(CardLayout)(cards.getLayout());
+        cl.show(cards,"card1");
+        frame.add(cards);
+        frame.setBounds(300,200,400,200);
         frame.setVisible(true);
     }
 }
